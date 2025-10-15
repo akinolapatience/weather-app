@@ -149,41 +149,53 @@ export default function App() {
             {/* LEFT COLUMN */}
             <section className="left-column">
               {/* Hero Card */}
-              <div className="hero-card">
-                {loading ? (
-                  <>
-                    <h1>Loading...</h1>
-                  </>
-                ) : (
-                  <>
-                    {!error && (
-                      <>
-                        <div className="hero-left">
-                          <div className="location">{loc}</div>
-                          <div className="date">
-                            {new Date().toLocaleDateString("en-US", {
-                              weekday: "long",
-                              month: "short",
-                              day: "numeric",
-                            })}
+              {loading ? (
+                <div className="card-list">
+                  {[...Array(1)].map((_, i) => (
+                    <div
+                      className="daily-card"
+                      style={{ height: 220, width: 800, alignItems: "center" }}
+                      key={i}
+                    >
+                      <h1>Loading...</h1>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="hero-card">
+                  {loading ? (
+                    <></>
+                  ) : (
+                    <>
+                      {!error && (
+                        <>
+                          <div className="hero-left">
+                            <div className="location">{loc}</div>
+                            <div className="date">
+                              {new Date().toLocaleDateString("en-US", {
+                                weekday: "long",
+                                month: "short",
+                                day: "numeric",
+                              })}
+                            </div>
                           </div>
-                        </div>
-                        <div className="hero-right">
-                          <img
-                            src={getWeatherIcon(current.temp)}
-                            alt="Weather Icon"
-                          />
-                          <div className="temp">{current.temp}°</div>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
+                          <div className="hero-right">
+                            <img
+                              src={getWeatherIcon(current.temp)}
+                              alt="Weather Icon"
+                            />
+                            <div className="temp">{current.temp}°</div>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
 
-                {!loading && error && (
-                  <div className="error">Error: {error}</div>
-                )}
-              </div>
+                  {!loading && error && (
+                    <div className="error">Error: {error}</div>
+                  )}
+                </div>
+              )}
 
               {/* Quick Stats */}
               {loading ? (

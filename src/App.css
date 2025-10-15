@@ -301,7 +301,12 @@
 .hour-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
-  gap: 16px; /* Adjust spacing between cards */
+  gap: 16px;
+}
+
+.card-list {
+  margin-bottom: 28px;
+  align-items: center;
 }
 
 @media (max-width: 900px) {
